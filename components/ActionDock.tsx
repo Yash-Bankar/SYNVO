@@ -1,0 +1,142 @@
+"use client";
+
+import React from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+interface ActionDockProps {
+  currentChapter: number;
+  totalChapters?: number;
+  onNavigateChapter: (index: number) => void;
+  onOpenApply: () => void;
+  chapterTitles?: string[];
+}
+
+export const ActionDock: React.FC<ActionDockProps> = ({
+  currentChapter,
+  totalChapters = 7,
+  onNavigateChapter,
+  onOpenApply,
+  chapterTitles = [
+    "The company",
+    "The starting point",
+    "The research",
+    "The partnership",
+    "The evidence",
+    "The ownership",
+    "Before you apply",
+  ],
+}) => {
+  const isFirst = currentChapter === 0;
+  const isLast = currentChapter === totalChapters - 1;
+
+  const handlePrev = () => {
+    if (!isFirst) {
+      onNavigateChapter(currentChapter - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (!isLast) {
+      onNavigateChapter(currentChapter + 1);
+    }
+  };
+
+  const handleDetailsClick = () => {
+    onNavigateChapter(totalChapters - 1);
+  };
+
+  return (
+    <>
+      {/* Mobile Right-Edge Vertical Indicator Dots (min 44px touch target) */}
+      <aside
+        aria-label="Chapter progress"
+        className="fixed right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 flex md:hidden flex-col items-center gap-1 py-3 px-1.5 rounded-full bg-chalk/80 backdrop-blur-md shadow-md border border-ink/10"
+      >
+        {Array.from({ length: totalChapters }).map((_, index) => {
+          const isActive = currentChapter === index;
+          return (
+            <button
+              key={`mob-ch-${index}`}
+              onClick={() => onNavigateChapter(index)}
+              aria-label={`Jump to chapter ${index + 1}: ${chapterTitles[index] || ""}`}
+              aria-current={isActive ? "step" : undefined}
+              className="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-ink group"
+            >
+              <span
+                className={`transition-all duration-300 rounded-full ${
+                  isActive
+                    ? "w-3 h-3 bg-ink scale-110"
+                    : "w-2 h-2 bg-ink/30 group-hover:bg-ink/60"
+                }`}
+              />
+            </button>
+          );
+        })}
+      </aside>
+
+      {/* Desktop Bottom Navigation: Left Counter/Arrows + Right Action Dock */}
+      <nav
+        aria-label="Page controls"
+        className="fixed bottom-6 sm:bottom-8 left-0 right-0 z-30 px-6 sm:px-10 md:px-16 pointer-events-none flex items-center justify-between"
+      >
+        {/* Left Side: Chapter Navigation (Arrows + 1 / 7) */}
+        <div className="hidden md:flex items-center gap-6 pointer-events-auto">
+          <button
+            onClick={handlePrev}
+            disabled={isFirst}
+            aria-label="Previous chapter"
+            className={`p-2 -ml-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-ink ${
+              isFirst
+                ? "opacity-20 cursor-not-allowed text-ink"
+                : "hover:scale-110 active:scale-95 text-ink cursor-pointer"
+            }`}
+          >
+            <ArrowLeft className="w-5 h-5 stroke-[2.2]" />
+          </button>
+
+          <span
+            aria-live="polite"
+            className="text-base font-bold text-ink tracking-widest select-none min-w-[50px] text-center"
+          >
+            {currentChapter + 1} / {totalChapters}
+          </span>
+
+          <button
+            onClick={handleNext}
+            disabled={isLast}
+            aria-label="Next chapter"
+            className={`p-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-ink ${
+              isLast
+                ? "opacity-20 cursor-not-allowed text-ink"
+                : "hover:scale-110 active:scale-95 text-ink cursor-pointer"
+            }`}
+          >
+            <ArrowRight className="w-5 h-5 stroke-[2.2]" />
+          </button>
+        </div>
+
+        {/* Right Side: Action Dock (Apply to Synvo + Details) */}
+        <div className="pointer-events-auto flex items-center gap-5 sm:gap-6 ml-auto">
+          <button
+            onClick={onOpenApply}
+            aria-label="Apply to Synvo"
+            className="h-[52px] md:h-[56px] px-7 sm:px-9 inline-flex items-center justify-center gap-3 rounded-full bg-ink text-chalk font-bold text-base tracking-tight hover:bg-ink/90 active:scale-98 transition-all shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
+          >
+            <span>Apply to Synvo</span>
+            <span className="text-lg leading-none transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </button>
+
+          <button
+            onClick={handleDetailsClick}
+            aria-label="Jump to Before you apply FAQs"
+            className="text-base font-bold text-ink hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-ink rounded px-1.5 py-1"
+          >
+            Details
+          </button>
+        </div>
+      </nav>
+    </>
+  );
+};

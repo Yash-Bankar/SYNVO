@@ -1,0 +1,38 @@
+{
+  "hero-sy.png": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "fully_transparent_pixels": 949472,
+    "corner_rgba": [
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "folded-book.png": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "fully_transparent_pixels": 861919,
+    "corner_rgba": [
+      1,
+      1,
+      1,
+      0
+    ]
+  }
+}

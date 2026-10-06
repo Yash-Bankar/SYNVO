@@ -1,0 +1,18 @@
+subject,period,metric,reported_value,unit,source_id,limits
+Stan,2025,Earning creators,59000,Creators; source says more than,S02,Platform population; not global; not typical income
+Stan,2025,Digital downloads sold,2200000,Units,S02,Rounded source count; not unique customers or revenue
+Stan,2025,Courses sold,300000,Units,S02,Rounded source count; not unique customers or revenue
+Thomas Frank,About two years by December 2023,Two-template sales,2100000,Dollars; currency not explicit,S01,"Founder-reported sales, not Flylighter revenue or net profit"
+Nina Fuji,First three launch weeks,Guide sales,100000,Dollars; source says more than; currency not explicit,S03,Vendor-selected account; no complete profit statement
+Kit,End of 2016,Monthly recurring revenue,518000,USD/month,S09,Not annual cash collected or personal income
+Kit,2016,Company profit,1000000,USD; source says more than,S09,Founder reported; not personal take-home
+Transistor,July 2019,Monthly recurring revenue,19000,Dollars/month; currency not explicit,S11,Personal salaries not specified
+MeetEdgar,Period unspecified,Annual revenue,Millions,Dollars/year; currency not explicit,S12,Exact amount and year unspecified; exit price private
+Carrd,August 2021,Annual recurring revenue,1000000,Dollars/year run rate; source says more than,S14,Not annual cash collected or personal income
+MacroFactor,September 2022,Reported users,35000,Users; active/paying basis unspecified,S07,Historical counts restated in 2026 report; no revenue inferred
+MacroFactor,September 2023,Reported users,90000,Users; active/paying basis unspecified,S07,Historical counts restated in 2026 report; no revenue inferred
+MacroFactor,September 2024,Reported users,185000,Users; active/paying basis unspecified,S07,Historical counts restated in 2026 report; no revenue inferred
+MacroFactor,September 2025,Reported users,400000,Users; active/paying basis unspecified,S07,Historical counts restated in 2026 report; no revenue inferred
+MacroFactor,September 2026,Reported users,600000,Users; active/paying basis unspecified,S07,Historical counts restated in 2026 report; no revenue inferred
+Beast Industries,January 2026 announcement,Equity investment,200000000,USD,S16,Company capital; completion not verified here; not revenue
+Creator Ventures,May 2025 announcement,Fund II size,45000000,Dollars; currency not explicit,S17,Consumer internet fund raise; not creator earnings
