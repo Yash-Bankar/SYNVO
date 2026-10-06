@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 
 interface MenuModalProps {
@@ -13,6 +14,12 @@ interface MenuModalProps {
   onOpenApply?: () => void;
 }
 
+interface MenuItem {
+  label: string;
+  href: string;
+  chapter?: number;
+}
+
 export const MenuModal: React.FC<MenuModalProps> = ({
   isOpen,
   onClose,
@@ -20,6 +27,8 @@ export const MenuModal: React.FC<MenuModalProps> = ({
   onOpenApply,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -39,20 +48,24 @@ export const MenuModal: React.FC<MenuModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { label: "How it works", chapter: 1, href: "/#starting-point" },
     { label: "The partnership", chapter: 3, href: "/#partnership" },
     { label: "About", chapter: 6, href: "/#before-you-apply" },
-    { label: "Research", href: "/research", isExternalPage: true },
     { label: "Before you apply", chapter: 6, href: "/#before-you-apply" },
+    { label: "Research", href: "/research" },
+
   ];
 
-  const handleItemClick = (item: (typeof menuItems)[0]) => {
+  const handleItemClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: MenuItem
+  ) => {
     onClose();
-    if (item.isExternalPage) {
-      return;
-    }
-    if (onNavigateChapter && item.chapter !== undefined) {
+    // On the homepage, animate to the target panel in place so the fragment
+    // and horizontal sequence stay in sync without a full navigation.
+    if (isHome && item.chapter !== undefined && onNavigateChapter) {
+      e.preventDefault();
       onNavigateChapter(item.chapter);
     }
   };
@@ -123,22 +136,14 @@ export const MenuModal: React.FC<MenuModalProps> = ({
               <nav className="flex flex-col space-y-3 sm:space-y-4">
                 {menuItems.map((item) => (
                   <motion.div key={item.label} variants={itemVariants}>
-                    {item.isExternalPage ? (
-                      <Link
-                        href={item.href}
-                        onClick={() => handleItemClick(item)}
-                        className="block text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-display text-chalk hover:text-citron transition-all"
-                      >
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleItemClick(item)}
-                        className="block text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-display text-chalk hover:text-citron transition-all text-left"
-                      >
-                        {item.label}
-                      </button>
-                    )}
+                    <Link
+                      href={item.href}
+                      scroll={item.chapter === undefined}
+                      onClick={(e) => handleItemClick(e, item)}
+                      className="block text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-display text-chalk hover:text-citron transition-all"
+                    >
+                      {item.label}
+                    </Link>
                   </motion.div>
                 ))}
               </nav>
