@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
+/* Map Tailwind's `font-sans` utility to the loaded Manrope font so explicit
+   `font-sans` usages don't fall back to the system UI stack. */
+@theme inline {
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 @layer base {
   :root {
     --persimmon: #EE6747;
     --citron: #EEE99D;
     --ink: #262139;
     --chalk: #F6F4EE;
-    --font-manrope: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   * {
@@ -14,7 +19,7 @@
   }
 
   html {
-    font-family: var(--font-manrope);
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--chalk);
     color: var(--ink);
     scroll-behavior: smooth;
@@ -27,7 +32,7 @@
     padding: 0;
     overflow-x: hidden;
     color: var(--ink);
-    font-family: var(--font-manrope);
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 }
 
@@ -47,86 +52,90 @@
 .border-ink { border-color: #262139; }
 .border-chalk { border-color: #F6F4EE; }
 
-/* Custom Typography per spec */
-.tracking-display {
-  letter-spacing: -0.035em;
-}
+/* Custom Typography per spec.
+   Kept in the components layer so Tailwind utility classes (e.g. text-[96px])
+   can still override these defaults. */
+@layer components {
+  .tracking-display {
+    letter-spacing: -0.035em;
+  }
 
-.tracking-body {
-  letter-spacing: -0.015em;
-}
+  .tracking-body {
+    letter-spacing: -0.015em;
+  }
 
-/* Specific Typography sizes matching build-guide.md */
-.font-wordmark {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-@media (min-width: 1024px) {
+  /* Specific Typography sizes matching build-guide.md */
   .font-wordmark {
-    font-size: 32px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
-}
+  @media (min-width: 1024px) {
+    .font-wordmark {
+      font-size: 32px;
+    }
+  }
 
-.font-hero-title {
-  font-size: 42px;
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-}
-@media (min-width: 640px) {
   .font-hero-title {
-    font-size: 54px;
-    line-height: 1.03;
-  }
-}
-@media (min-width: 1024px) {
-  .font-hero-title {
-    font-size: 80px;
-    line-height: 1.02;
-  }
-}
-
-.font-display-title {
-  font-size: 36px;
-  line-height: 1.08;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-}
-@media (min-width: 640px) {
-  .font-display-title {
-    font-size: 46px;
-    line-height: 1.06;
-  }
-}
-@media (min-width: 1024px) {
-  .font-display-title {
-    font-size: 64px;
+    font-size: 42px;
     line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.035em;
   }
-}
+  @media (min-width: 640px) {
+    .font-hero-title {
+      font-size: 54px;
+      line-height: 1.03;
+    }
+  }
+  @media (min-width: 1024px) {
+    .font-hero-title {
+      font-size: 80px;
+      line-height: 1.02;
+    }
+  }
 
-.font-body-text {
-  font-size: 18px;
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-@media (min-width: 1024px) {
+  .font-display-title {
+    font-size: 36px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+  }
+  @media (min-width: 640px) {
+    .font-display-title {
+      font-size: 46px;
+      line-height: 1.06;
+    }
+  }
+  @media (min-width: 1024px) {
+    .font-display-title {
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
   .font-body-text {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  @media (min-width: 1024px) {
+    .font-body-text {
+      font-size: 22px;
+      line-height: 1.45;
+    }
+  }
+
+  .font-figure-note {
+    font-size: 14px;
     line-height: 1.45;
   }
-}
-
-.font-figure-note {
-  font-size: 14px;
-  line-height: 1.45;
-}
-@media (min-width: 1024px) {
-  .font-figure-note {
-    font-size: 16px;
-    line-height: 1.45;
+  @media (min-width: 1024px) {
+    .font-figure-note {
+      font-size: 16px;
+      line-height: 1.45;
+    }
   }
 }
 

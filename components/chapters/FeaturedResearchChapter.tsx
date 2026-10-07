@@ -83,10 +83,11 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
             <div>
               <Link
                 href="/research/the-business-beyond-the-next-post"
-                className="inline-flex items-center gap-2 text-xl font-bold text-ink underline underline-offset-8 decoration-2 hover:opacity-75 transition-opacity"
+                className="inline-flex items-center gap-2 text-xl font-bold text-ink hover:opacity-75 transition-opacity group"
               >
-                <span>Read the essay</span>
-                <span className="text-2xl leading-none font-normal">→</span>
+                {/* Continuous underline using border-bottom with spacing */}
+                <span className="border-b-2 border-ink pb-0.5">Read the essay</span>
+                <span className="text-2xl leading-none font-bold">→</span>
               </Link>
             </div>
 
@@ -96,12 +97,12 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
           </motion.div>
         </div>
 
-        {/* Right Column: Folded Book Artwork positioned adjacent to text */}
+        {/* Right Column: Folded Book Artwork (Made bigger) */}
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="w-full md:w-[50%] lg:w-[52%] max-w-[660px] h-[50vh] md:h-[72vh] flex items-center justify-center md:justify-end select-none"
+          className="w-full md:w-[50%] lg:w-[52%] max-w-[760px] h-[55vh] md:h-[82vh] flex items-center justify-center md:justify-end select-none"
         >
           <motion.div
             style={
@@ -122,7 +123,7 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
                 alt="The Business Beyond the Next Post artwork"
                 fill
                 priority
-                sizes="(max-width: 768px) 85vw, 45vw"
+                sizes="(max-width: 768px) 90vw, 52vw"
                 className="object-contain object-right drop-shadow-xl"
               />
             </div>

@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} h-full`}>
-      <body className="min-h-full font-sans antialiased text-ink bg-chalk selection:bg-persimmon selection:text-chalk">
+      <body className="min-h-full antialiased text-ink bg-chalk selection:bg-persimmon selection:text-chalk">
         {children}
       </body>
     </html>
