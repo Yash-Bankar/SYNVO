@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface PartnershipChapterProps {
   isActive: boolean;
@@ -88,7 +88,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
   const vbW = synvoCx + R + 20;
   const vbH = teamCy + R + 20;
 
-  const petalVariants = {
+  const petalVariants: Variants = {
     hidden: { opacity: 0, scale: 0.88 },
     visible: (i: number) => ({
       opacity: 1,
