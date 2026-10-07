@@ -48,8 +48,7 @@ export default function ResearchIndexPage() {
                 href="/research/the-business-beyond-the-next-post"
                 className="inline-flex items-center gap-2 text-xl font-bold text-ink underline underline-offset-8 decoration-2 hover:opacity-75 transition-opacity"
               >
-                <span>Read the essay</span>
-                <span className="text-2xl leading-none">→</span>
+                <span>Read the essay→</span>
               </Link>
             </div>
 

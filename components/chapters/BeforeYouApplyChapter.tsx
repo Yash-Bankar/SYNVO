@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 interface BeforeYouApplyChapterProps {
@@ -13,9 +13,10 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
   isActive,
   defaultExpandedIndex = -1,
 }) => {
-  const [openItems, setOpenItems] = useState<Record<number, boolean>>({
-    [defaultExpandedIndex]: true,
-  });
+  const prefersReducedMotion = useReducedMotion();
+  const [openIndex, setOpenIndex] = useState<number | null>(
+    defaultExpandedIndex >= 0 ? defaultExpandedIndex : null
+  );
 
   const faqs = [
     {
@@ -41,10 +42,8 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
   ];
 
   const toggleFaq = (index: number) => {
-    setOpenItems((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+    // Only one disclosure may be open at a time.
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -53,8 +52,24 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
       aria-label="Chapter 7: Before you apply"
       className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col justify-between px-6 sm:px-10 md:px-16 pt-20 md:pt-28 pb-20 md:pb-28 overflow-hidden select-none"
     >
-      {/* Background artwork: authentic folded ribbon + technical crosshairs bleeding from left edge */}
-      <div className="absolute left-0 top-[2%] sm:top-[4%] md:top-[5%] w-[92vw] sm:w-[75vw] md:w-[58vw] lg:w-[54vw] max-w-[890px] h-[48vh] sm:h-[54vh] md:h-[62vh] max-h-[640px] pointer-events-none select-none z-0">
+      {/* Background artwork: authentic folded ribbon + technical crosshairs bleeding from left edge.
+          Reveals left-to-right like a ribbon being drawn in. */}
+      <motion.div
+        initial={
+          prefersReducedMotion
+            ? { opacity: 1 }
+            : { clipPath: "inset(0 100% 0 0)", x: -60, opacity: 0.5 }
+        }
+        animate={
+          isActive
+            ? prefersReducedMotion
+              ? { opacity: 1 }
+              : { clipPath: "inset(0 0% 0 0)", x: 0, opacity: 1 }
+            : {}
+        }
+        transition={{ duration: 1.25, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute left-0 top-[2%] sm:top-[4%] md:top-[5%] w-[92vw] sm:w-[75vw] md:w-[58vw] lg:w-[54vw] max-w-[890px] h-[48vh] sm:h-[54vh] md:h-[62vh] max-h-[640px] pointer-events-none select-none z-0"
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/before-you-apply-artwork.png"
@@ -62,7 +77,7 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
           className="w-full h-full object-contain object-left-top"
           draggable={false}
         />
-      </div>
+      </motion.div>
 
       <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-0 max-w-[1400px] mx-auto my-auto">
         {/* Left Column: bottom mission statement and sy wordmark */}
@@ -103,7 +118,7 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
           {/* 5 Minimalist Underline Disclosures */}
           <div className="divide-y divide-ink/20 border-t border-b border-ink/20">
             {faqs.map((faq, idx) => {
-              const isOpen = !!openItems[idx];
+              const isOpen = openIndex === idx;
               return (
                 <div key={faq.q} className="py-3.5 sm:py-4">
                   <button

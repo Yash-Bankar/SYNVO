@@ -38,22 +38,30 @@ export const HomePage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [viewportReady, setViewportReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const isTransitioningRef = useRef(false);
   const wheelDeltaRef = useRef(0);
 
   // Check viewport and reduced motion
   useEffect(() => {
-    const checkViewport = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    checkViewport();
-
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
 
-    window.addEventListener("resize", checkViewport);
-    return () => window.removeEventListener("resize", checkViewport);
+    const syncViewport = () => {
+      setIsDesktop(window.innerWidth >= 768);
+      setViewportReady(true);
+    };
+    const syncReducedMotion = () => setReducedMotion(mq.matches);
+
+    syncViewport();
+    syncReducedMotion();
+
+    window.addEventListener("resize", syncViewport);
+    mq.addEventListener("change", syncReducedMotion);
+    return () => {
+      window.removeEventListener("resize", syncViewport);
+      mq.removeEventListener("change", syncReducedMotion);
+    };
   }, []);
 
   // Hash synchronization on mount and change
@@ -187,9 +195,11 @@ export const HomePage: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentChapter, isMenuOpen, isApplyOpen, navigateToChapter]);
 
-  // Mobile IntersectionObserver to sync indicators with vertical scroll
+  // Mobile IntersectionObserver to sync indicators with vertical scroll.
+  // Wait until the viewport has been measured so it never runs against the
+  // initial (pre-measurement) layout and clobber the URL fragment.
   useEffect(() => {
-    if (isDesktop) return;
+    if (!viewportReady || isDesktop) return;
 
     const observers: IntersectionObserver[] = [];
     CHAPTER_IDS.forEach((id, index) => {
@@ -218,7 +228,7 @@ export const HomePage: React.FC = () => {
     return () => {
       observers.forEach((obs) => obs.disconnect());
     };
-  }, [isDesktop]);
+  }, [viewportReady, isDesktop]);
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-chalk text-ink font-sans">
