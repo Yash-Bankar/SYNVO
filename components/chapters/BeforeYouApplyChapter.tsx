@@ -50,7 +50,7 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
     <section
       id="before-you-apply"
       aria-label="Chapter 7: Before you apply"
-      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col justify-between px-6 sm:px-10 md:px-16 pt-20 md:pt-28 pb-20 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-28 pb-28 md:pb-28 overflow-hidden select-none"
     >
       {/* Background artwork: authentic folded ribbon + technical crosshairs bleeding from left edge.
           Reveals left-to-right like a ribbon being drawn in. */}
@@ -68,20 +68,20 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
             : {}
         }
         transition={{ duration: 1.25, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-0 top-[2%] sm:top-[4%] md:top-[5%] w-[92vw] sm:w-[75vw] md:w-[58vw] lg:w-[54vw] max-w-[890px] h-[48vh] sm:h-[54vh] md:h-[62vh] max-h-[640px] pointer-events-none select-none z-0"
+        className="absolute right-[-12%] bottom-[4%] w-[66vw] sm:w-[52vw] h-[30vh] sm:h-[38vh] md:left-0 md:right-auto md:top-[5%] md:bottom-auto md:w-[58vw] lg:w-[54vw] md:h-[62vh] max-w-[890px] md:max-h-[640px] pointer-events-none select-none z-0"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/before-you-apply-artwork.png"
           alt="SYNVO folded ribbon and technical diagram"
-          className="w-full h-full object-contain object-left-top"
+          className="w-full h-full object-contain object-right-bottom md:object-left-top"
           draggable={false}
         />
       </motion.div>
 
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-0 max-w-[1400px] mx-auto my-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col-reverse md:flex-row items-start md:items-center justify-start md:justify-between gap-8 md:gap-0 max-w-[1400px] mx-auto">
         {/* Left Column: bottom mission statement and sy wordmark */}
-        <div className="w-full md:w-[44%] lg:w-[40%] flex flex-col justify-end h-full min-h-[300px] md:min-h-[580px] z-20 pb-2 md:pb-6">
+        <div className="w-full md:w-[44%] lg:w-[40%] flex flex-col justify-end h-auto md:h-full min-h-0 md:min-h-[580px] z-20 pb-2 md:pb-6">
           {/* sy brand + mission statement */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

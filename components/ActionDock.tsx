@@ -47,10 +47,10 @@ export const ActionDock: React.FC<ActionDockProps> = ({
 
   return (
     <>
-      {/* Mobile Right-Edge Vertical Indicator Dots (min 44px touch target) */}
+      {/* Mobile Right-Edge Vertical Indicator Dots */}
       <aside
         aria-label="Chapter progress"
-        className="fixed right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 flex md:hidden flex-col items-center gap-1 py-3 px-1.5 rounded-full bg-chalk/80 backdrop-blur-md shadow-md border border-ink/10"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-30 flex md:hidden flex-col items-center py-2 pr-1.5"
       >
         {Array.from({ length: totalChapters }).map((_, index) => {
           const isActive = currentChapter === index;
@@ -60,13 +60,13 @@ export const ActionDock: React.FC<ActionDockProps> = ({
               onClick={() => onNavigateChapter(index)}
               aria-label={`Jump to chapter ${index + 1}: ${chapterTitles[index] || ""}`}
               aria-current={isActive ? "step" : undefined}
-              className="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-ink group"
+              className="w-9 h-9 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-ink/40 group"
             >
               <span
                 className={`transition-all duration-300 rounded-full ${
                   isActive
-                    ? "w-3 h-3 bg-ink scale-110"
-                    : "w-2 h-2 bg-ink/30 group-hover:bg-ink/60"
+                    ? "w-3.5 h-3.5 bg-ink"
+                    : "w-3.5 h-3.5 border-[1.5px] border-ink/45 group-hover:border-ink"
                 }`}
               />
             </button>

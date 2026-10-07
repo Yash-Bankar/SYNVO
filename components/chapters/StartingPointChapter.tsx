@@ -14,9 +14,9 @@ export const StartingPointChapter: React.FC<StartingPointChapterProps> = ({
     <section
       id="starting-point"
       aria-label="Chapter 2: The starting point"
-      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-24 md:pt-[136px] pb-28 md:pb-[150px] overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-20 md:pt-[136px] pb-28 md:pb-[150px] overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-12 max-w-[1440px] mx-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-12 max-w-[1440px] mx-auto">
         {/* Left Column: Heading and Summary */}
         <div className="w-full lg:w-[47%] flex flex-col justify-start">
           {/* Main Display Headline */}
@@ -37,16 +37,16 @@ export const StartingPointChapter: React.FC<StartingPointChapterProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-body-text text-ink text-base sm:text-lg md:text-xl lg:text-[27px] font-normal leading-[1.38] max-w-[560px] mt-10 lg:mt-12"
+            className="hidden lg:block font-body-text text-ink text-base sm:text-lg md:text-xl lg:text-[27px] font-normal leading-[1.38] max-w-[560px] mt-10 lg:mt-12"
           >
-            Together, we investigate whether<br className="hidden sm:inline" />
-            a better answer could become<br className="hidden sm:inline" />
+            Together, we investigate whether<br className="hidden sm:inline" />{" "}
+            a better answer could become<br className="hidden sm:inline" />{" "}
             a software company worth owning.
           </motion.p>
         </div>
 
         {/* Right Column: Bracketed Observations + Geometric Shape Artwork */}
-        <div className="w-full lg:w-[51%] flex flex-col justify-between gap-10 lg:gap-[62px]">
+        <div className="w-full lg:w-[51%] flex flex-col justify-between gap-6 lg:gap-[62px]">
           {/* Top: 3 Observations with SVG Curly Bracket */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -70,19 +70,30 @@ export const StartingPointChapter: React.FC<StartingPointChapterProps> = ({
             {/* 3 Observation Lines */}
             <div className="space-y-4 sm:space-y-5 md:space-y-6 font-body-text text-ink text-base sm:text-lg md:text-xl lg:text-[26px] font-normal leading-[1.32]">
               <p>
-                The question your audience<br className="hidden sm:inline" />
+                The question your audience<br className="hidden sm:inline" />{" "}
                 keeps asking.
               </p>
               <p>
-                The workaround they<br className="hidden sm:inline" />
+                The workaround they<br className="hidden sm:inline" />{" "}
                 keep using.
               </p>
               <p>
-                The tool that almost<br className="hidden sm:inline" />
+                The tool that almost<br className="hidden sm:inline" />{" "}
                 solves the problem.
               </p>
             </div>
           </motion.div>
+
+          {/* Investigation Note — mobile places it below the observations */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isActive ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden font-body-text text-ink text-base sm:text-lg font-normal leading-[1.38]"
+          >
+            Together, we investigate whether a better answer could become a
+            software company worth owning.
+          </motion.p>
 
           {/* Bottom: Geometric Vector Illustration matching Reference Artwork */}
           <div className="w-full flex justify-end lg:translate-x-[33px]">

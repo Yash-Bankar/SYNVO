@@ -21,7 +21,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
         initial={{ opacity: 0, scale: 1.04 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 z-0 pointer-events-none select-none"
+        className="hidden md:block absolute inset-0 z-0 pointer-events-none select-none"
         aria-hidden="true"
       >
         <svg
@@ -56,10 +56,47 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
         </svg>
       </motion.div>
 
+      {/* Mobile artwork layer: ribbon + giant "sy" anchored to the lower half */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isActive ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        className="md:hidden absolute left-0 right-0 bottom-0 h-[52%] z-0 pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        <svg
+          viewBox="0 0 390 470"
+          preserveAspectRatio="xMidYMax slice"
+          className="w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M -30 430
+               C 130 370, 250 240, 430 70
+               L 430 165
+               C 250 330, 130 470, -30 520
+               Z"
+            fill="#F6F4EE"
+            opacity="0.96"
+          />
+          <text
+            x="14"
+            y="372"
+            fontSize="360"
+            fontWeight="800"
+            letterSpacing="-0.06em"
+            fill="#262139"
+            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+          >
+            sy
+          </text>
+        </svg>
+      </motion.div>
+
       {/* Foreground content */}
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 max-w-[1360px] mx-auto my-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-6 md:gap-0 max-w-[1360px] mx-auto">
         {/* Left Column: Heading, Pillars, and Call to Action */}
-        <div className="w-full md:w-[56%] flex flex-col justify-center h-full z-20">
+        <div className="w-full md:w-[56%] flex flex-col justify-start md:justify-center h-full z-20">
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}

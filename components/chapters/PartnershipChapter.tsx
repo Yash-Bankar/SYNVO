@@ -101,11 +101,11 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
     <section
       id="partnership"
       aria-label="Chapter 4: The partnership"
-      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col justify-between px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-24 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 max-w-[1360px] mx-auto my-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-between gap-6 md:gap-0 max-w-[1360px] mx-auto">
         {/* Left Column: Headline and note */}
-        <div className="w-full md:w-[44%] flex flex-col justify-center h-full z-20">
+        <div className="w-full md:w-[44%] flex flex-col justify-start md:justify-center h-full z-20">
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="font-body-text text-ink text-base sm:text-lg md:text-[20px] font-normal leading-snug max-w-[480px]"
+            className="hidden md:block font-body-text text-ink text-base sm:text-lg md:text-[20px] font-normal leading-snug max-w-[480px]"
           >
             Equity, time, responsibilities, decision rights and financial
             commitments are agreed before development.
@@ -143,7 +143,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
         </div>
 
         {/* Right Column: 3-Hex Venn Diagram — large, fills the right panel */}
-        <div className="w-full md:w-[54%] h-[60vh] md:h-[80vh] flex items-center justify-center md:justify-end select-none">
+        <div className="w-full md:w-[54%] h-[40vh] min-h-[270px] md:h-[80vh] flex items-center justify-center md:justify-end select-none">
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -326,6 +326,18 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             </svg>
           </motion.div>
         </div>
+
+        {/* Condition note — mobile places it below the diagram */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="md:hidden font-body-text text-ink text-base font-normal leading-snug"
+        >
+          Equity, time, responsibilities, decision rights and financial
+          commitments are agreed before development.
+        </motion.p>
       </div>
     </section>
   );

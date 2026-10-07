@@ -23,7 +23,10 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
+    const sync = () => setPrefersReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -44,11 +47,11 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
     <section
       id="featured-research"
       aria-label="Chapter 3: The research"
-      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col justify-between px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-24 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-20 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 xl:gap-16 max-w-[1320px] mx-auto my-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-center gap-4 md:gap-12 xl:gap-16 max-w-[1320px] mx-auto">
         {/* Left Column: Heading, Deck, Underline CTA, and Note */}
-        <div className="w-full md:w-[50%] lg:w-[48%] flex flex-col justify-between h-full max-h-[520px] z-20">
+        <div className="w-full md:w-[50%] lg:w-[48%] flex flex-col justify-start md:justify-between h-auto md:h-full max-h-none md:max-h-[520px] pt-1 md:pt-0 z-20">
           <div>
             <motion.h2
               initial={{ opacity: 0, y: 25 }}
@@ -78,7 +81,7 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-4"
+            className="hidden md:block space-y-4"
           >
             <div>
               <Link
@@ -102,7 +105,7 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="w-full md:w-[50%] lg:w-[52%] max-w-[760px] h-[55vh] md:h-[82vh] flex items-center justify-center md:justify-end select-none"
+          className="w-full md:w-[50%] lg:w-[52%] max-w-[760px] h-[32vh] min-h-[210px] md:h-[82vh] flex items-center justify-center md:justify-end select-none"
         >
           <motion.div
             style={
@@ -124,11 +127,33 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
                 fill
                 priority
                 sizes="(max-width: 768px) 90vw, 52vw"
-                className="object-contain object-right drop-shadow-xl"
+                className="object-contain object-center md:object-right drop-shadow-xl"
               />
             </div>
           </motion.div>
         </div>
+
+        {/* CTA + note — mobile places them below the artwork */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="md:hidden space-y-3"
+        >
+          <div>
+            <Link
+              href="/research/the-business-beyond-the-next-post"
+              className="inline-flex items-center gap-2 text-xl font-bold text-ink hover:opacity-75 transition-opacity group"
+            >
+              <span className="border-b-2 border-ink pb-0.5">Read the essay</span>
+              <span className="text-2xl leading-none font-bold">→</span>
+            </Link>
+          </div>
+          <p className="text-base font-normal text-ink/75">
+            Independent cases. Original sources.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

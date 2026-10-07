@@ -21,10 +21,10 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    const sync = () => setPrefersReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -48,11 +48,11 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
       onMouseLeave={handleMouseLeave}
       id="hero"
       aria-label="Chapter 1: The company"
-      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col justify-between px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-24 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10 xl:gap-16 max-w-[1360px] mx-auto my-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-center gap-2 md:gap-6 lg:gap-10 xl:gap-16 max-w-[1360px] mx-auto">
         {/* Left Column: Exact Typography */}
-        <div className="w-full md:w-[48%] lg:w-[46%] flex flex-col justify-center py-4 md:py-0 z-20">
+        <div className="w-full md:w-[48%] lg:w-[46%] flex flex-col justify-start md:justify-center pt-2 md:py-0 z-20">
           <div className="mb-6 md:mb-8">
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
@@ -96,7 +96,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
         </div>
 
         {/* Right Column: "sy" Ribbon Sculpture positioned adjacent to the text */}
-        <div className="w-full md:w-[72%] lg:w-[84%] h-[50vh] md:h-[84vh] min-h-[460px] md:min-h-[620px] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end ml-20">
+        <div className="w-full md:w-[72%] lg:w-[84%] h-[42vh] md:h-[84vh] min-h-[280px] md:min-h-[620px] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
           <motion.div
             style={
               prefersReducedMotion
@@ -114,7 +114,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
             <motion.div
               initial={
                 prefersReducedMotion
-                  ? { opacity: 1 }
+                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
                   : {
                       clipPath: "inset(0 100% 0 0)",
                       opacity: 0.7,
@@ -122,7 +122,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
               }
               animate={
                 prefersReducedMotion
-                  ? { opacity: 1 }
+                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
                   : {
                       clipPath: "inset(0 0% 0 0)",
                       opacity: 1,
@@ -158,8 +158,8 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
                     alt="SYNVO decorative ribbon sculpture"
                     priority
                     fill
-                    sizes="(max-width: 768px) 90vw, 55vw"
-                    className="object-contain object-right drop-shadow-2xl"
+                    sizes="(max-width: 768px) 100vw, 55vw"
+                    className="object-cover object-center md:object-contain md:object-right drop-shadow-2xl"
                   />
                 </div>
               </motion.div>

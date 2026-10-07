@@ -57,8 +57,8 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
             <polygon points="1500,-100 2100,-100 2100,250 1250,150" fill="#EE6747" />
           </svg>
 
-          {/* Typography Overlay "sy" - Moved significantly up to clear the footer & Details link */}
-          <div className="absolute right-[4%] lg:right-[6%] bottom-[18%] md:bottom-[22%] z-20 mix-blend-normal">
+          {/* Typography Overlay "sy" (desktop only; hidden on mobile to avoid overlap) */}
+          <div className="hidden md:block absolute right-[4%] lg:right-[6%] bottom-[18%] md:bottom-[22%] z-20 mix-blend-normal">
             <h2
               className="text-ink font-extrabold m-0 p-0"
               style={{
@@ -74,10 +74,10 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
       </div>
 
       {/* Foreground Content Container - Constrained for Typography */}
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-center px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-24 md:pb-28 max-w-[1360px] mx-auto my-auto pointer-events-auto">
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-start md:justify-center px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 max-w-[1360px] mx-auto pointer-events-auto">
         
         {/* Left Column: Headline, Process Flowchart, Epigram */}
-        <div className="w-full md:w-[60%] lg:w-[55%] flex flex-col justify-center h-full">
+        <div className="w-full md:w-[60%] lg:w-[55%] flex flex-col justify-start md:justify-center h-full">
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,13 +92,54 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
             reason to.
           </motion.h2>
 
-          {/* 4-Step Process Flow */}
+          {/* 4-Step Process Flow — vertical stack on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-4 sm:mb-8 w-full overflow-x-auto pb-24 scrollbar-hide"
+            className="mb-8 w-full md:hidden"
+          >
+            <div className="flex flex-col items-start gap-3">
+              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-[#D6D0E4] text-ink text-sm font-medium">
+                <span className="w-3.5 h-3.5 rounded-full bg-ink flex-shrink-0" />
+                <span className="leading-tight">Understand<br />the problem</span>
+              </div>
+              <span className="text-ink font-bold text-lg leading-none ml-7">↓</span>
+
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-[#EEE99D] text-ink text-sm font-medium">
+                  <span className="w-3.5 h-3.5 rounded-full bg-ink flex-shrink-0" />
+                  <span className="leading-tight">Test the<br />opportunity</span>
+                </div>
+                <span className="text-ink font-bold text-lg leading-none">→</span>
+                <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-[#EE6747] text-chalk text-sm font-medium">
+                  <span className="w-3.5 h-3.5 rounded-full border-[1.5px] border-chalk bg-transparent flex-shrink-0" />
+                  <span className="leading-tight">Stop if<br />evidence is weak.</span>
+                </div>
+              </div>
+              <span className="text-ink font-bold text-lg leading-none ml-7">↓</span>
+
+              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-[#D6D0E4] text-ink text-sm font-medium">
+                <span className="w-3.5 h-3.5 rounded-full bg-ink flex-shrink-0" />
+                <span className="leading-tight">Agree on<br />the partnership</span>
+              </div>
+              <span className="text-ink font-bold text-lg leading-none ml-7">↓</span>
+
+              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-ink text-chalk text-sm font-medium">
+                <span className="w-3.5 h-3.5 rounded-full border-[1.5px] border-chalk bg-transparent flex-shrink-0" />
+                <span className="leading-tight">Build the<br />company</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 4-Step Process Flow — horizontal on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden md:block mb-8 w-full overflow-x-auto pb-24 scrollbar-hide"
           >
             <div className="flex items-center gap-2 md:gap-3 flex-nowrap w-max">
               
