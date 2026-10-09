@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { PlusIcon, MinusIcon } from "../icons/BrandIcons";
 
 interface BeforeYouApplyChapterProps {
   isActive: boolean;
@@ -90,9 +90,13 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-3"
           >
-            <span className="font-serif italic font-extrabold text-5xl sm:text-6xl text-persimmon leading-none block select-none mb-4">
-              sy
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/svg-elements-2026-10-08/sy-monogram-persimmon.svg"
+              alt=""
+              aria-hidden="true"
+              className="w-[74px] sm:w-[92px] h-auto mb-4 select-none"
+            />
             <h3 className="text-xl sm:text-2xl md:text-[26px] font-extrabold text-ink tracking-tight max-w-[420px] leading-[1.18]">
               Help exceptional creators build and own enduring companies.
             </h3>
@@ -131,9 +135,9 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
                     <span className="pr-6">{faq.q}</span>
                     <span className="flex-shrink-0 text-ink/80">
                       {isOpen ? (
-                        <Minus className="w-5 h-5 stroke-[1.75]" />
+                        <MinusIcon className="w-5 h-5" />
                       ) : (
-                        <Plus className="w-5 h-5 stroke-[1.75]" />
+                        <PlusIcon className="w-5 h-5" />
                       )}
                     </span>
                   </button>

@@ -1,0 +1,197 @@
+[
+  {
+    "file": "application-button.svg",
+    "viewBox": "0 0 340 56",
+    "bytes": 337
+  },
+  {
+    "file": "arrow-left.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 278
+  },
+  {
+    "file": "arrow-right.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 280
+  },
+  {
+    "file": "article-figures/demand-desktop.svg",
+    "viewBox": "0 0 960 440",
+    "bytes": 2063
+  },
+  {
+    "file": "article-figures/demand-mobile.svg",
+    "viewBox": "0 0 360 440",
+    "bytes": 2063
+  },
+  {
+    "file": "article-figures/macrofactor-reported-users.svg",
+    "viewBox": "0 0 650 550",
+    "bytes": 2011
+  },
+  {
+    "file": "article-figures/opportunity-desktop.svg",
+    "viewBox": "0 0 960 515",
+    "bytes": 2947
+  },
+  {
+    "file": "article-figures/opportunity-mobile.svg",
+    "viewBox": "0 0 360 730",
+    "bytes": 3007
+  },
+  {
+    "file": "article-figures/outcomes-desktop.svg",
+    "viewBox": "0 0 960 650",
+    "bytes": 4248
+  },
+  {
+    "file": "article-figures/outcomes-mobile.svg",
+    "viewBox": "0 0 360 1260",
+    "bytes": 4256
+  },
+  {
+    "file": "article-figures/priorities-desktop.svg",
+    "viewBox": "0 0 960 360",
+    "bytes": 2819
+  },
+  {
+    "file": "article-figures/priorities-mobile.svg",
+    "viewBox": "0 0 360 680",
+    "bytes": 2723
+  },
+  {
+    "file": "article-figures/work-desktop.svg",
+    "viewBox": "0 0 960 395",
+    "bytes": 3122
+  },
+  {
+    "file": "article-figures/work-mobile.svg",
+    "viewBox": "0 0 360 1060",
+    "bytes": 3126
+  },
+  {
+    "file": "audience-thumbnail.svg",
+    "viewBox": "0 0 240 240",
+    "bytes": 241
+  },
+  {
+    "file": "chapter-dots.svg",
+    "viewBox": "0 0 40 250",
+    "bytes": 567
+  },
+  {
+    "file": "chevron-down.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 270
+  },
+  {
+    "file": "close.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 271
+  },
+  {
+    "file": "company-petal.svg",
+    "viewBox": "0 0 390 390",
+    "bytes": 230
+  },
+  {
+    "file": "course-illustration.svg",
+    "viewBox": "0 0 760 300",
+    "bytes": 498
+  },
+  {
+    "file": "diagonal-ribbon.svg",
+    "viewBox": "0 0 800 600",
+    "bytes": 203
+  },
+  {
+    "file": "evidence-flow-desktop.svg",
+    "viewBox": "0 0 1140 290",
+    "bytes": 1429
+  },
+  {
+    "file": "evidence-flow-mobile.svg",
+    "viewBox": "0 0 620 520",
+    "bytes": 1439
+  },
+  {
+    "file": "folded-book.svg",
+    "viewBox": "0 0 768 512",
+    "bytes": 9871
+  },
+  {
+    "file": "hero-sy-ribbon.svg",
+    "viewBox": "0 0 768 512",
+    "bytes": 11272
+  },
+  {
+    "file": "menu.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 272
+  },
+  {
+    "file": "minus.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 253
+  },
+  {
+    "file": "observation-brace.svg",
+    "viewBox": "0 0 90 390",
+    "bytes": 296
+  },
+  {
+    "file": "paper-fold.svg",
+    "viewBox": "0 0 800 550",
+    "bytes": 309
+  },
+  {
+    "file": "partnership-map.svg",
+    "viewBox": "0 0 800 620",
+    "bytes": 1582
+  },
+  {
+    "file": "plus.svg",
+    "viewBox": "0 0 48 48",
+    "bytes": 262
+  },
+  {
+    "file": "reading-progress.svg",
+    "viewBox": "0 0 800 4",
+    "bytes": 271
+  },
+  {
+    "file": "recurring-value-thumbnail.svg",
+    "viewBox": "0 0 240 240",
+    "bytes": 249
+  },
+  {
+    "file": "resource-illustration.svg",
+    "viewBox": "0 0 760 300",
+    "bytes": 812
+  },
+  {
+    "file": "software-illustration.svg",
+    "viewBox": "0 0 760 300",
+    "bytes": 1093
+  },
+  {
+    "file": "starting-point.svg",
+    "viewBox": "0 0 800 440",
+    "bytes": 398
+  },
+  {
+    "file": "sy-monogram-persimmon.svg",
+    "viewBox": "0 0 610 450",
+    "bytes": 523
+  },
+  {
+    "file": "sy-monogram.svg",
+    "viewBox": "0 0 610 450",
+    "bytes": 513
+  },
+  {
+    "file": "wordmark-synvo.svg",
+    "viewBox": "0 0 360 100",
+    "bytes": 254
+  }
+]

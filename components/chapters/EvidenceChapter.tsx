@@ -59,16 +59,13 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
 
           {/* Typography Overlay "sy" (desktop only; hidden on mobile to avoid overlap) */}
           <div className="hidden md:block absolute right-[4%] lg:right-[6%] bottom-[18%] md:bottom-[22%] z-20 mix-blend-normal">
-            <h2
-              className="text-ink font-extrabold m-0 p-0"
-              style={{
-                fontSize: "clamp(10rem, 20vw, 20rem)", // Slightly capped so it doesn't break wide screens
-                lineHeight: "0.75",
-                letterSpacing: "-0.07em",
-              }}
-            >
-              sy
-            </h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/svg-elements-2026-10-08/sy-monogram.svg"
+              alt=""
+              aria-hidden="true"
+              className="w-[clamp(9rem,18vw,18rem)] h-auto select-none"
+            />
           </div>
         </motion.div>
       </div>

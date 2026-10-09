@@ -3,9 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { X } from "lucide-react";
+import { CloseIcon } from "./icons/BrandIcons";
 
 interface MenuModalProps {
   isOpen: boolean;
@@ -117,7 +116,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({
               className="inline-flex items-center gap-2 text-chalk hover:text-citron text-base sm:text-lg font-bold tracking-tight transition-colors focus:outline-none"
             >
               <span>Close</span>
-              <X className="w-5 h-5 stroke-[2]" />
+              <CloseIcon className="w-5 h-5" />
             </button>
 
             <Link
@@ -165,13 +164,12 @@ export const MenuModal: React.FC<MenuModalProps> = ({
             {/* Right Column: Giant sy brand sculpture */}
             <div className="w-full md:w-[52%] lg:w-[54%] h-[50vh] md:h-[84vh] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end">
               <div className="relative w-full h-full">
-                <Image
-                  src="/assets/hero-sy.png"
-                  alt="SYNVO brand sculpture"
-                  priority
-                  fill
-                  sizes="(max-width: 768px) 90vw, 55vw"
-                  className="object-contain object-right drop-shadow-2xl"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/svg-elements-2026-10-08/sy-monogram-persimmon.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-full object-contain object-center md:object-right drop-shadow-2xl"
                 />
               </div>
             </div>

@@ -2,13 +2,16 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/Header";
 import { MenuModal } from "@/components/MenuModal";
 import { ApplicationModal } from "@/components/ApplicationModal";
+import { ReadingProgress } from "@/components/ReadingProgress";
 import {
-  ArrowLeft,
-  ArrowRight,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronDownIcon,
+} from "@/components/icons/BrandIcons";
+import {
   Download,
   FileText,
   ExternalLink,
@@ -20,6 +23,7 @@ import {
 export default function FlagshipArticlePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isApplyOpen, setIsApplyOpen] = useState(false);
+  const [contentsOpen, setContentsOpen] = useState(false);
 
   const sections = [
     { id: "the-audience-is-already-buying", title: "The audience is already buying" },
@@ -53,6 +57,9 @@ export default function FlagshipArticlePage() {
 
   return (
     <div className="min-h-screen bg-chalk text-ink selection:bg-persimmon selection:text-chalk">
+      {/* Reading progress */}
+      <ReadingProgress />
+
       {/* Universal Header */}
       <Header onOpenMenu={() => setIsMenuOpen(true)} />
 
@@ -64,7 +71,7 @@ export default function FlagshipArticlePage() {
             href="/research"
             className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-ink/70 hover:text-ink transition-colors group"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeftIcon className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Research Library</span>
           </Link>
         </div>
@@ -98,12 +105,11 @@ export default function FlagshipArticlePage() {
             {/* Folded Book Artwork */}
             <div className="lg:col-span-4 flex justify-center lg:justify-end">
               <div className="relative w-48 sm:w-60 md:w-72 aspect-square">
-                <Image
-                  src="/assets/folded-book.png"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/svg-elements-2026-10-08/folded-book.svg"
                   alt="The Business Beyond the Next Post illustration"
-                  fill
-                  priority
-                  className="object-contain drop-shadow-md"
+                  className="absolute inset-0 w-full h-full object-contain drop-shadow-md"
                 />
               </div>
             </div>
@@ -146,6 +152,42 @@ export default function FlagshipArticlePage() {
 
           {/* Main 680px Readable Article Column */}
           <article className="lg:col-span-8 max-w-[680px] w-full text-ink font-sans space-y-8 leading-relaxed">
+            {/* Mobile "In this article" disclosure */}
+            <div className="lg:hidden border-y border-ink/20">
+              <button
+                type="button"
+                onClick={() => setContentsOpen((v) => !v)}
+                aria-expanded={contentsOpen}
+                aria-controls="article-contents-mobile"
+                className="w-full flex items-center justify-between py-3 text-left font-bold text-ink focus:outline-none"
+              >
+                <span className="underline underline-offset-4">In this article</span>
+                <ChevronDownIcon
+                  className={`w-5 h-5 transition-transform ${contentsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {contentsOpen && (
+                <nav
+                  id="article-contents-mobile"
+                  className="flex flex-col space-y-2.5 pb-4 text-sm"
+                >
+                  {sections.map((section, idx) => (
+                    <a
+                      key={section.id}
+                      href={`#${section.id}`}
+                      onClick={() => setContentsOpen(false)}
+                      className="text-ink/70 hover:text-persimmon transition-colors leading-snug"
+                    >
+                      <span className="font-mono text-xs text-ink/40 mr-1.5">
+                        0{idx + 1}
+                      </span>
+                      {section.title}
+                    </a>
+                  ))}
+                </nav>
+              )}
+            </div>
+
             {/* Opening Thesis Statement */}
             <div className="p-6 sm:p-8 rounded-3xl bg-citron/40 border border-ink/10">
               <p className="text-xl sm:text-2xl font-extrabold tracking-tight text-ink leading-snug">
@@ -889,7 +931,7 @@ export default function FlagshipArticlePage() {
                   className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-chalk text-ink font-bold text-base sm:text-lg hover:bg-white active:scale-98 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-chalk"
                 >
                   <span>Apply to Synvo</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRightIcon className="w-5 h-5" />
                 </button>
               </div>
             </div>

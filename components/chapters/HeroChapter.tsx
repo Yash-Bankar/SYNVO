@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
+import { HeroSyRibbon } from "./HeroSyRibbon";
 
 interface HeroChapterProps {
   isActive: boolean;
 }
 
-export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
+export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive: _isActive }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -96,7 +96,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
         </div>
 
         {/* Right Column: "sy" Ribbon Sculpture positioned adjacent to the text */}
-        <div className="w-full md:w-[72%] lg:w-[84%] h-[42vh] md:h-[84vh] min-h-[280px] md:min-h-[620px] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
+        <div className="w-full md:w-[72%] lg:w-[84%] h-[42vh] md:h-[84vh] min-h-[280px] md:min-h-[620px] select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
           <motion.div
             style={
               prefersReducedMotion
@@ -108,41 +108,18 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
                     transformStyle: "preserve-3d",
                   }
             }
-            className="relative w-full h-full flex items-center justify-end"
+            className="relative w-full h-full flex items-center justify-end pointer-events-auto"
           >
-            {/* Smooth Left-to-Right Handwriting / Calligraphy Stroke Reveal */}
-            <motion.div
-              initial={
-                prefersReducedMotion
-                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
-                  : {
-                      clipPath: "inset(0 100% 0 0)",
-                      opacity: 0.7,
-                    }
-              }
-              animate={
-                prefersReducedMotion
-                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
-                  : {
-                      clipPath: "inset(0 0% 0 0)",
-                      opacity: 1,
-                    }
-              }
-              transition={{
-                duration: 1.5,
-                delay: 0.2,
-                ease: [0.25, 1, 0.5, 1],
-              }}
-              className="relative w-full h-full flex items-center justify-end"
-            >
+            {/* The ribbon flows in like cloth and forms the mark (see HeroSyRibbon) */}
+            <div className="relative w-full h-full flex items-center justify-end">
               {/* Continuous Gentle Float */}
               <motion.div
                 animate={
                   prefersReducedMotion
                     ? {}
                     : {
-                        y: [-8, 8, -8],
-                        rotate: [-1, 1, -1],
+                        y: [-6, 6, -6],
+                        rotate: [-0.8, 0.8, -0.8],
                       }
                 }
                 transition={{
@@ -152,18 +129,18 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
                 }}
                 className="relative w-full h-full flex items-center justify-end"
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/assets/hero-sy.png"
-                    alt="SYNVO decorative ribbon sculpture"
-                    priority
-                    fill
-                    sizes="(max-width: 768px) 100vw, 55vw"
-                    className="object-cover object-center md:object-contain md:object-right drop-shadow-2xl"
+                <div className="relative w-full h-full drop-shadow-[0_20px_40px_rgba(38,33,57,0.35)] cursor-pointer">
+                  <HeroSyRibbon
+                    preserveAspectRatio="xMidYMid meet"
+                    className="w-full h-full"
+                    interactive={true}
+                    showReplayButton={true}
+                    autoPlay={true}
+                    duration={2400}
                   />
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, ShieldCheck, Mail } from "lucide-react";
+import { ShieldCheck, Mail } from "lucide-react";
+import { CloseIcon, ArrowRightIcon } from "./icons/BrandIcons";
 
 interface ApplicationModalProps {
   isOpen: boolean;
@@ -57,7 +58,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
               aria-label="Close dialog"
               className="absolute top-6 right-6 p-2 rounded-full hover:bg-ink/5 transition-colors focus:outline-none focus:ring-2 focus:ring-ink"
             >
-              <X className="w-6 h-6 text-ink" />
+              <CloseIcon className="w-6 h-6 text-ink" />
             </button>
 
             {/* Badge */}
@@ -93,7 +94,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
               >
                 <Mail className="w-5 h-5" />
                 <span>Contact Founding Team</span>
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
 
               <button

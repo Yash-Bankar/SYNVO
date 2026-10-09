@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/Header";
 import { MenuModal } from "@/components/MenuModal";
 import { ApplicationModal } from "@/components/ApplicationModal";
-import { ArrowRight, Download, FileText } from "lucide-react";
+import { ArrowRightIcon } from "@/components/icons/BrandIcons";
+import { Download, FileText } from "lucide-react";
 
 export default function ResearchIndexPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,11 +54,11 @@ export default function ResearchIndexPage() {
 
             {/* Right side artwork inside card */}
             <div className="absolute right-[-4%] bottom-[-8%] w-[50%] max-w-[360px] aspect-square pointer-events-none select-none">
-              <Image
-                src="/assets/folded-book.png"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/svg-elements-2026-10-08/folded-book.svg"
                 alt="The Business Beyond the Next Post"
-                fill
-                className="object-contain"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
@@ -69,31 +69,35 @@ export default function ResearchIndexPage() {
               {/* Row 1: The Economics of a Loyal Audience */}
               <div className="py-6 flex items-center justify-between gap-4 group cursor-pointer">
                 <div className="flex items-center gap-4">
-                  {/* Geometric Thumbnail: Citron, Persimmon, Ink split */}
-                  <div className="w-16 h-14 rounded bg-citron relative overflow-hidden flex-shrink-0 border border-ink/10">
-                    <div className="absolute right-0 top-0 w-8 h-14 bg-persimmon rounded-l-full" />
-                    <div className="absolute left-0 bottom-0 w-7 h-7 bg-ink" />
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/assets/svg-elements-2026-10-08/audience-thumbnail.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-16 h-14 rounded object-cover flex-shrink-0 border border-ink/10"
+                  />
                   <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug group-hover:opacity-75">
                     The Economics of<br />a Loyal Audience
                   </h4>
                 </div>
-                <ArrowRight className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                <ArrowRightIcon className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </div>
 
               {/* Row 2: What Makes a Product Worth Paying for Again */}
               <div className="py-6 flex items-center justify-between gap-4 group cursor-pointer">
                 <div className="flex items-center gap-4">
-                  {/* Geometric Thumbnail: Citron top, Persimmon bottom-left, Ink bottom-right */}
-                  <div className="w-16 h-14 rounded bg-citron relative overflow-hidden flex-shrink-0 border border-ink/10">
-                    <div className="absolute left-0 bottom-0 w-16 h-8 bg-persimmon rounded-tr-full" />
-                    <div className="absolute right-0 top-0 w-7 h-7 bg-ink" />
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/assets/svg-elements-2026-10-08/recurring-value-thumbnail.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-16 h-14 rounded object-cover flex-shrink-0 border border-ink/10"
+                  />
                   <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug group-hover:opacity-75">
                     What Makes a Product<br />Worth Paying for Again
                   </h4>
                 </div>
-                <ArrowRight className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                <ArrowRightIcon className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </div>
             </div>
 

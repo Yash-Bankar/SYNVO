@@ -41,18 +41,15 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
             opacity="0.96"
           />
 
-          {/* Giant lowercase "sy" in ink, overlapping the ribbon */}
-          <text
-            x="720"
-            y="690"
-            fontSize="700"
-            fontWeight="800"
-            letterSpacing="-0.05em"
-            fill="#262139"
-            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-          >
-            sy
-          </text>
+          {/* Giant lowercase "sy" monogram in ink, overlapping the ribbon */}
+          <image
+            href="/assets/svg-elements-2026-10-08/sy-monogram.svg"
+            x="700"
+            y="300"
+            width="690"
+            height="509"
+            preserveAspectRatio="xMidYMid meet"
+          />
         </svg>
       </motion.div>
 
@@ -79,17 +76,14 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
             fill="#F6F4EE"
             opacity="0.96"
           />
-          <text
-            x="14"
-            y="372"
-            fontSize="360"
-            fontWeight="800"
-            letterSpacing="-0.06em"
-            fill="#262139"
-            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-          >
-            sy
-          </text>
+          <image
+            href="/assets/svg-elements-2026-10-08/sy-monogram.svg"
+            x="6"
+            y="170"
+            width="372"
+            height="274"
+            preserveAspectRatio="xMidYMid meet"
+          />
         </svg>
       </motion.div>
 

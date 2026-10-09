@@ -3,7 +3,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
 interface FeaturedResearchChapterProps {
   isActive: boolean;
@@ -121,13 +120,11 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
             className="relative w-full h-full flex items-center justify-end"
           >
             <div className="relative w-full h-full">
-              <Image
-                src="/assets/folded-book.png"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/svg-elements-2026-10-08/folded-book.svg"
                 alt="The Business Beyond the Next Post artwork"
-                fill
-                priority
-                sizes="(max-width: 768px) 90vw, 52vw"
-                className="object-contain object-center md:object-right drop-shadow-xl"
+                className="w-full h-full object-contain object-center md:object-right drop-shadow-xl"
               />
             </div>
           </motion.div>

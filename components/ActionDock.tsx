@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon } from "./icons/BrandIcons";
 
 interface ActionDockProps {
   currentChapter: number;
@@ -91,7 +91,7 @@ export const ActionDock: React.FC<ActionDockProps> = ({
                 : "hover:scale-110 active:scale-95 text-ink cursor-pointer"
             }`}
           >
-            <ArrowLeft className="w-5 h-5 stroke-[2.2]" />
+            <ArrowLeftIcon className="w-5 h-5" />
           </button>
 
           <span
@@ -111,7 +111,7 @@ export const ActionDock: React.FC<ActionDockProps> = ({
                 : "hover:scale-110 active:scale-95 text-ink cursor-pointer"
             }`}
           >
-            <ArrowRight className="w-5 h-5 stroke-[2.2]" />
+            <ArrowRightIcon className="w-5 h-5" />
           </button>
         </div>
 
