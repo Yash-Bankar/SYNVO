@@ -4,6 +4,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import SyRibbonVideo from "../SyRibbonVideo";
 
+// --- Hero ribbon-video tuning -------------------------------------------------
+// VIDEO_SCALE: size of the video relative to the logo slot. The video frame is
+// 16:9 and the logo only fills ~46% of it, so we render the video much larger
+// than the slot and object-contain it (never object-cover) so nothing is cropped.
+const VIDEO_SCALE = "w-[200%]"; // bigger number = bigger logo
+// Soft radial edge fade so the video blends into the coral background.
+const MASK_INNER = "60%"; // opaque core of the fade
+const MASK_OUTER = "100%"; // fully transparent edge
+const VIDEO_MASK: React.CSSProperties = {
+  WebkitMaskImage: `radial-gradient(ellipse at center, #000 ${MASK_INNER}, transparent ${MASK_OUTER})`,
+  maskImage: `radial-gradient(ellipse at center, #000 ${MASK_INNER}, transparent ${MASK_OUTER})`,
+};
+
 interface HeroChapterProps {
   isActive: boolean;
 }
@@ -48,11 +61,19 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
       onMouseLeave={handleMouseLeave}
       id="hero"
       aria-label="Chapter 1: The company"
-      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-x-clip select-none"
     >
       <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-center gap-2 md:gap-6 lg:gap-10 xl:gap-16 max-w-[1360px] mx-auto">
         {/* Left Column: Exact Typography */}
-        <div className="w-full md:w-[48%] lg:w-[46%] flex flex-col justify-start md:justify-center pt-2 md:py-0 z-20">
+        <div className="w-full md:w-[48%] lg:w-[46%] relative z-20 flex flex-col justify-start md:justify-center pt-2 md:py-0">
+          {/* Feathered coral scrim: sits above the video (left column z-20 >
+              video column z-10) and below the text, so the ribbon flying in
+              behind the copy is softly masked with no hard edge. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-y-8 -left-6 -right-10 z-0 bg-persimmon blur-2xl"
+          />
+          <div className="relative z-10 flex flex-col">
           <div className="mb-6 md:mb-8">
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
@@ -93,10 +114,12 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
           >
             No finished idea required.
           </motion.p>
+          </div>
         </div>
 
         {/* Right Column: "sy" Ribbon Sculpture positioned adjacent to the text */}
-        <div className="w-full md:w-[72%] lg:w-[84%] h-[42vh] md:h-[84vh] min-h-[280px] md:min-h-[620px] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
+        <div className="w-full md:w-[72%] lg:w-[84%] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
+          {/* Mouse tilt (decorative — does not clip) */}
           <motion.div
             style={
               prefersReducedMotion
@@ -108,60 +131,31 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
                     transformStyle: "preserve-3d",
                   }
             }
-            className="relative w-full h-full flex items-center justify-end"
+            className="relative w-full flex items-center justify-center md:justify-end"
           >
-            {/* Smooth Left-to-Right Handwriting / Calligraphy Stroke Reveal */}
+            {/* Continuous Gentle Float (no clipping — video is never cropped) */}
             <motion.div
-              initial={
-                prefersReducedMotion
-                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
-                  : {
-                      clipPath: "inset(0 100% 0 0)",
-                      opacity: 0.7,
-                    }
-              }
               animate={
                 prefersReducedMotion
-                  ? { opacity: 1, clipPath: "inset(0 0% 0 0)" }
+                  ? {}
                   : {
-                      clipPath: "inset(0 0% 0 0)",
-                      opacity: 1,
+                      y: [-8, 8, -8],
+                      rotate: [-1, 1, -1],
                     }
               }
               transition={{
-                duration: 1.5,
-                delay: 0.2,
-                ease: [0.25, 1, 0.5, 1],
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
-              className="relative w-full h-full flex items-center justify-end"
+              className="relative w-full flex items-center justify-center md:justify-end"
             >
-              {/* Continuous Gentle Float */}
-              <motion.div
-                animate={
-                  prefersReducedMotion
-                    ? {}
-                    : {
-                        y: [-8, 8, -8],
-                        rotate: [-1, 1, -1],
-                      }
-                }
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="relative w-full h-full flex items-center justify-end"
-              >
-                <div className="relative w-full h-full">
-                  {/* SY logo — pre-rendered ribbon video, replacing hero-sy.png.
-                      .sy-video-frame (see globals.css) makes it ~2.2x the old
-                      logo, centers it on the same point, applies the edge mask,
-                      and keeps it behind the text (z-index / pointer-events). */}
-                  <div className="sy-video-frame aspect-video">
-                    <SyRibbonVideo className="w-full h-full object-cover" />
-                  </div>
-                </div>
-              </motion.div>
+              <div className="relative w-full aspect-square">
+                <SyRibbonVideo
+                  className={`pointer-events-none absolute left-1/2 top-1/2 z-0 ${VIDEO_SCALE} max-w-none -translate-x-1/2 -translate-y-1/2 object-contain`}
+                  style={VIDEO_MASK}
+                />
+              </div>
             </motion.div>
           </motion.div>
         </div>
