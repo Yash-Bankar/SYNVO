@@ -101,9 +101,9 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
     <section
       id="partnership"
       aria-label="Chapter 4: The partnership"
-      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 sm:pt-28 md:pt-32 pb-36 md:pb-28 overflow-x-clip md:overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-between gap-6 md:gap-0 max-w-[1360px] mx-auto">
+      <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-between gap-4 md:gap-0 max-w-[1360px] mx-auto">
         {/* Left Column: Headline and note */}
         <div className="w-full md:w-[44%] flex flex-col justify-start md:justify-center h-full z-20">
           <motion.h2
@@ -113,10 +113,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-display-title text-ink font-extrabold tracking-display mb-1"
           >
-            Your
-            <br />
-            understanding
-            <br />
+            Your understanding <br className="hidden sm:inline" />
             shapes it.
           </motion.h2>
 
@@ -125,7 +122,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display-title text-ink font-extrabold tracking-display mb-8"
+            className="font-display-title text-ink font-extrabold tracking-display mb-4 md:mb-8"
           >
             A team runs it.
           </motion.h3>
@@ -142,8 +139,8 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
           </motion.p>
         </div>
 
-        {/* Right Column: 3-Hex Venn Diagram — large, fills the right panel */}
-        <div className="w-full md:w-[54%] h-[40vh] min-h-[270px] md:h-[80vh] flex items-center justify-center md:justify-end select-none">
+        {/* Right Column: 3-Hex Venn Diagram — beautifully sized on both mobile and desktop */}
+        <div className="w-full md:w-[54%] h-[46vh] min-h-[300px] max-h-[380px] md:max-h-none md:h-[80vh] md:min-h-0 flex items-center justify-center md:justify-end select-none my-2 md:my-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -203,9 +200,8 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
                 viewport={{ once: true }}
               />
 
-              {/* Diagram labels — desktop only; phones get a readable stacked list
-                  (shown below) because the baked labels scale down too far. */}
-              <g className="hidden md:block">
+              {/* Diagram labels — rendered directly inside the hexagonal petals */}
+              <g>
               {/* YOU label — positioned in upper-left of You petal */}
               <text
                 x={youCx - R * 0.6}
@@ -331,45 +327,13 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
           </motion.div>
         </div>
 
-        {/* Readable role list — phones only (diagram labels are hidden there) */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="md:hidden grid grid-cols-1 gap-3 w-full"
-        >
-          <div className="rounded-2xl bg-[#EE6747] text-ink p-4">
-            <p className="font-extrabold text-lg tracking-tight">You</p>
-            <p className="text-sm leading-snug mt-1">
-              Audience understanding. Product direction.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-ink text-chalk p-4">
-            <p className="font-extrabold text-lg tracking-tight">Synvo</p>
-            <p className="text-sm leading-snug mt-1">
-              Development funding. Product and company build.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-[#C8C2D8] text-ink p-4">
-            <p className="font-extrabold text-lg tracking-tight">Operating team</p>
-            <p className="text-sm leading-snug mt-1">Daily operation.</p>
-          </div>
-          <div className="rounded-2xl bg-chalk border-2 border-ink text-ink p-4">
-            <p className="font-extrabold text-lg tracking-tight">Company</p>
-            <p className="text-sm leading-snug mt-1">
-              Formed by the three roles above.
-            </p>
-          </div>
-        </motion.div>
-
         {/* Condition note — mobile places it below the diagram */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="md:hidden font-body-text text-ink text-base font-normal leading-snug"
+          className="md:hidden font-body-text text-ink text-sm sm:text-base font-normal leading-snug mt-3"
         >
           Equity, time, responsibilities, decision rights and financial
           commitments are agreed before development.

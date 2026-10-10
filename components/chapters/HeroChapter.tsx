@@ -81,8 +81,8 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-1"
             >
-              Build what<br />
-              your audience<br />
+              Build what <br className="hidden sm:inline" />
+              your audience <br className="hidden sm:inline" />
               needs.
             </motion.h1>
 
@@ -92,7 +92,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="font-hero-title text-citron font-extrabold tracking-display leading-[1.02]"
             >
-              Own what<br />
+              Own what <br className="hidden sm:inline" />
               it becomes.
             </motion.h2>
           </div>
@@ -118,7 +118,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
         </div>
 
         {/* Right Column: "sy" Ribbon Sculpture positioned adjacent to the text */}
-        <div className="w-full md:w-[72%] lg:w-[84%] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-2 md:mt-0 ml-0 md:ml-20">
+        <div className="w-[85%] mx-auto md:w-[72%] lg:w-[84%] pointer-events-none select-none z-10 flex items-center justify-center md:justify-end mt-8 md:mt-0 ml-0 md:ml-20">
           {/* Mouse tilt (decorative — does not clip) */}
           <motion.div
             style={

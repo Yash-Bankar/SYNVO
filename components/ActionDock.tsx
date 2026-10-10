@@ -77,7 +77,7 @@ export const ActionDock: React.FC<ActionDockProps> = ({
       {/* Desktop Bottom Navigation: Left Counter/Arrows + Right Action Dock */}
       <nav
         aria-label="Page controls"
-        className="fixed bottom-6 sm:bottom-8 left-0 right-0 z-30 px-6 sm:px-10 md:px-16 pointer-events-none flex items-center justify-between"
+        className="fixed bottom-5 sm:bottom-8 left-0 right-0 z-30 pl-4 pr-12 sm:px-10 md:px-16 pointer-events-none flex items-center justify-between"
       >
         {/* Left Side: Chapter Navigation (Arrows + 1 / 7) */}
         <div className="hidden md:flex items-center gap-6 pointer-events-auto">
@@ -116,14 +116,14 @@ export const ActionDock: React.FC<ActionDockProps> = ({
         </div>
 
         {/* Right Side: Action Dock (Apply to Synvo + Details) */}
-        <div className="pointer-events-auto flex items-center gap-5 sm:gap-6 ml-auto">
+        <div className="pointer-events-auto flex items-center gap-2.5 sm:gap-6 ml-auto">
           <button
             onClick={onOpenApply}
             aria-label="Apply to Synvo"
-            className="h-[52px] md:h-[56px] px-6 sm:px-9 inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-full bg-ink text-chalk font-bold text-sm sm:text-base tracking-tight whitespace-nowrap hover:bg-ink/90 active:scale-98 transition-all shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
+            className="h-[46px] sm:h-[52px] md:h-[56px] px-4 sm:px-7 md:px-9 inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-ink text-chalk font-bold text-xs sm:text-sm md:text-base tracking-tight whitespace-nowrap hover:bg-ink/90 active:scale-98 transition-all shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
           >
             <span className="whitespace-nowrap">Apply to Synvo</span>
-            <span className="text-lg leading-none transition-transform group-hover:translate-x-1">
+            <span className="text-sm sm:text-lg leading-none transition-transform group-hover:translate-x-1">
               →
             </span>
           </button>
@@ -131,7 +131,7 @@ export const ActionDock: React.FC<ActionDockProps> = ({
           <button
             onClick={handleDetailsClick}
             aria-label="Jump to Before you apply FAQs"
-            className="text-base font-bold text-ink hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-ink rounded px-1.5 py-1"
+            className="text-xs sm:text-base font-bold text-ink hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-ink rounded px-1 sm:px-1.5 py-1 whitespace-nowrap"
           >
             Details
           </button>

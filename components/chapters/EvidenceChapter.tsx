@@ -71,7 +71,7 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
       </div>
 
       {/* Foreground Content Container - Constrained for Typography */}
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-start md:justify-center px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 max-w-[1360px] mx-auto pointer-events-auto">
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-start md:justify-center px-6 sm:px-10 md:px-16 pt-28 sm:pt-32 md:pt-32 pb-36 md:pb-28 max-w-[1360px] mx-auto pointer-events-auto">
         
         {/* Left Column: Headline, Process Flowchart, Epigram */}
         <div className="w-full md:w-[60%] lg:w-[55%] flex flex-col justify-start md:justify-center h-full">

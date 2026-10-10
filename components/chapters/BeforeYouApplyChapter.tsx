@@ -50,7 +50,7 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
     <section
       id="before-you-apply"
       aria-label="Chapter 7: Before you apply"
-      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-28 pb-28 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-28 sm:pt-32 md:pt-28 pb-36 md:pb-28 overflow-hidden select-none"
     >
       {/* Background artwork: authentic folded ribbon + technical crosshairs bleeding from left edge.
           Reveals left-to-right like a ribbon being drawn in. */}

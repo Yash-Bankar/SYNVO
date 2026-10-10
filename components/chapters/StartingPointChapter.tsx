@@ -14,7 +14,7 @@ export const StartingPointChapter: React.FC<StartingPointChapterProps> = ({
     <section
       id="starting-point"
       aria-label="Chapter 2: The starting point"
-      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-20 md:pt-[136px] pb-28 md:pb-[150px] overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-citron text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-28 sm:pt-32 md:pt-[136px] pb-36 md:pb-[150px] overflow-hidden select-none"
     >
       <div className="relative z-10 w-full h-full flex-1 flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-12 max-w-[1440px] mx-auto">
         {/* Left Column: Heading and Summary */}

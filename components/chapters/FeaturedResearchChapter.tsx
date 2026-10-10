@@ -46,7 +46,7 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
     <section
       id="featured-research"
       aria-label="Chapter 3: The research"
-      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-20 md:pt-32 pb-28 md:pb-28 overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-chalk text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-28 sm:pt-32 md:pt-32 pb-36 md:pb-28 overflow-hidden select-none"
     >
       <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-center gap-4 md:gap-12 xl:gap-16 max-w-[1320px] mx-auto">
         {/* Left Column: Heading, Deck, Underline CTA, and Note */}

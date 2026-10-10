@@ -14,7 +14,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
     <section
       id="ownership"
       aria-label="Chapter 6: The ownership"
-      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-24 md:pt-32 pb-28 md:pb-[150px] overflow-hidden select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 pt-28 sm:pt-32 md:pt-32 pb-36 md:pb-[150px] overflow-hidden select-none"
     >
       {/* Full-bleed artwork layer: chalk ribbon sweeping behind a giant ink "sy" */}
       <motion.div
@@ -58,7 +58,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 1 } : {}}
         transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="md:hidden absolute left-0 right-0 bottom-0 h-[52%] z-0 pointer-events-none select-none"
+        className="md:hidden absolute left-0 right-0 bottom-0 h-[32%] z-0 pointer-events-none select-none opacity-20"
         aria-hidden="true"
       >
         <svg
@@ -79,7 +79,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
           <image
             href="/assets/svg-elements-2026-10-08/sy-monogram.svg"
             x="6"
-            y="170"
+            y="250"
             width="372"
             height="274"
             preserveAspectRatio="xMidYMid meet"
