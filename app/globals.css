@@ -164,3 +164,56 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Hero ribbon video (replaces the old hero-sy.png logo).
+   The video frame is 16:9 and the logo occupies ~46% of its width, so we make
+   the video ~2.2x the old logo's box and centre it on the same point, then
+   fade its edges into the coral page background with a soft radial mask.
+
+   TUNE THESE:
+     --sy-video-scale        2.2   video size  (x the logo slot width)
+     --sy-video-x / -y       0px   position    (nudge video off centre)
+     --sy-video-mask-inner   55%   opaque core of the edge fade
+     --sy-video-mask-outer  100%   fully transparent edge of the fade
+--------------------------------------------------------------------------- */
+.sy-video-frame {
+  --sy-video-scale: 2.2;
+  /* Nudge to re-centre on the logo inside the frame (percent of frame size). */
+  --sy-video-x: 2.8%;
+  --sy-video-y: -3%;
+  /* The logo fills ~50% x ~59% of the frame, so keep the core opaque to ~62%
+     and fade to nothing by ~80% to hide the video's slightly different bg. */
+  --sy-video-mask-inner: 60%;
+  --sy-video-mask-outer: 76%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% * var(--sy-video-scale));
+  transform: translate(
+    calc(-50% + var(--sy-video-x)),
+    calc(-50% + var(--sy-video-y))
+  );
+  z-index: 0;
+  pointer-events: none;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 var(--sy-video-mask-inner),
+    transparent var(--sy-video-mask-outer)
+  );
+  mask-image: radial-gradient(
+    ellipse at center,
+    #000 var(--sy-video-mask-inner),
+    transparent var(--sy-video-mask-outer)
+  );
+}
+
+/* Scale the video down on small screens so it never looks oversized and its
+   edge fade finishes inside the viewport (no visible band / no scrollbar). */
+@media (max-width: 768px) {
+  .sy-video-frame {
+    --sy-video-scale: 1.4;
+  }
+}

@@ -12,7 +12,6 @@ import { PartnershipChapter } from "./chapters/PartnershipChapter";
 import { EvidenceChapter } from "./chapters/EvidenceChapter";
 import { OwnershipChapter } from "./chapters/OwnershipChapter";
 import { BeforeYouApplyChapter } from "./chapters/BeforeYouApplyChapter";
-import { RibbonPreloader } from "./RibbonPreloader";
 
 const CHAPTER_IDS = [
   "hero",
@@ -36,7 +35,6 @@ const CHAPTER_TITLES = [
 
 export const HomePage: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
-  const [showPreloader, setShowPreloader] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -318,13 +316,6 @@ export const HomePage: React.FC = () => {
         isOpen={isApplyOpen}
         onClose={() => setIsApplyOpen(false)}
       />
-
-      {/* Website Introduction Ribbon Preloader */}
-      {showPreloader && (
-        <RibbonPreloader
-          onComplete={() => setShowPreloader(false)}
-        />
-      )}
     </div>
   );
 };
