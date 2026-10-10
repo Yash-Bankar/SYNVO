@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Mail } from "lucide-react";
-import { CloseIcon, ArrowRightIcon } from "./icons/BrandIcons";
+import { ShieldCheck } from "lucide-react";
+import { CloseIcon } from "./icons/BrandIcons";
 
 interface ApplicationModalProps {
   isOpen: boolean;
@@ -80,22 +80,22 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
 
             <div className="bg-white/80 rounded-2xl p-4 sm:p-5 border border-ink/10 mb-6 space-y-2">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink/60">
-                <span>Application Notice</span>
+                <span>Partnership Terms</span>
               </div>
               <p className="text-sm sm:text-base text-ink/80 leading-normal">
-                Partnership submissions are reviewed on rolling basis. Equity, role allocation, and financial commitments are fully agreed before development begins.
+                Equity, time, responsibilities, decision rights and financial
+                commitments are agreed before development begins.
               </p>
             </div>
 
             <div className="space-y-3">
-              <a
-                href="mailto:partner@synvo.com?subject=Synvo%20Creator%20Partnership%20Inquiry"
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-full bg-ink text-chalk font-semibold text-base sm:text-lg hover:bg-ink/90 transition-all shadow-md group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
-              >
-                <Mail className="w-5 h-5" />
-                <span>Contact Founding Team</span>
-                <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </a>
+              {/* The destination is a founder-approved placeholder; no live URL is
+                  published until it is confirmed. */}
+              <div className="w-full rounded-2xl border border-dashed border-ink/25 bg-white/60 px-6 py-5 text-center">
+                <p className="text-sm sm:text-base text-ink/70 leading-relaxed">
+                  The application link will be added before publication.
+                </p>
+              </div>
 
               <button
                 type="button"

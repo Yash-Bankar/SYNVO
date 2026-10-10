@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { MenuModal } from "@/components/MenuModal";
 import { ApplicationModal } from "@/components/ApplicationModal";
-import { ArrowRightIcon } from "@/components/icons/BrandIcons";
 import { Download, FileText } from "lucide-react";
 
 export default function ResearchIndexPage() {
@@ -67,7 +66,7 @@ export default function ResearchIndexPage() {
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6 pt-2">
             <div className="divide-y divide-ink/15 border-t border-b border-ink/15">
               {/* Row 1: The Economics of a Loyal Audience */}
-              <div className="py-6 flex items-center justify-between gap-4 group cursor-pointer">
+              <div className="py-6 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -76,15 +75,19 @@ export default function ResearchIndexPage() {
                     aria-hidden="true"
                     className="w-16 h-14 rounded object-cover flex-shrink-0 border border-ink/10"
                   />
-                  <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug group-hover:opacity-75">
-                    The Economics of<br />a Loyal Audience
-                  </h4>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug">
+                      The Economics of<br />a Loyal Audience
+                    </h4>
+                    <span className="mt-1 inline-block text-xs font-semibold uppercase tracking-wider text-ink/50">
+                      In progress
+                    </span>
+                  </div>
                 </div>
-                <ArrowRightIcon className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </div>
 
               {/* Row 2: What Makes a Product Worth Paying for Again */}
-              <div className="py-6 flex items-center justify-between gap-4 group cursor-pointer">
+              <div className="py-6 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -93,11 +96,15 @@ export default function ResearchIndexPage() {
                     aria-hidden="true"
                     className="w-16 h-14 rounded object-cover flex-shrink-0 border border-ink/10"
                   />
-                  <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug group-hover:opacity-75">
-                    What Makes a Product<br />Worth Paying for Again
-                  </h4>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-ink leading-snug">
+                      What Makes a Product<br />Worth Paying for Again
+                    </h4>
+                    <span className="mt-1 inline-block text-xs font-semibold uppercase tracking-wider text-ink/50">
+                      In progress
+                    </span>
+                  </div>
                 </div>
-                <ArrowRightIcon className="w-5 h-5 text-ink group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </div>
             </div>
 

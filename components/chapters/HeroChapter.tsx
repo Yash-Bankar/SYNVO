@@ -61,7 +61,7 @@ export const HeroChapter: React.FC<HeroChapterProps> = ({ isActive }) => {
       onMouseLeave={handleMouseLeave}
       id="hero"
       aria-label="Chapter 1: The company"
-      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-28 md:pb-28 overflow-x-clip select-none"
+      className="relative w-full h-full min-h-[100dvh] bg-persimmon text-ink flex flex-col px-6 sm:px-10 md:px-16 pt-24 md:pt-[136px] pb-28 md:pb-[104px] overflow-x-clip select-none"
     >
       <div className="relative z-10 w-full h-full flex-1 flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-center gap-2 md:gap-6 lg:gap-10 xl:gap-16 max-w-[1360px] mx-auto">
         {/* Left Column: Exact Typography */}

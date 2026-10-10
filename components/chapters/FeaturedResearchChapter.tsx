@@ -57,7 +57,7 @@ export const FeaturedResearchChapter: React.FC<FeaturedResearchChapterProps> = (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-6 md:mb-8"
+              className="font-display-title text-ink font-extrabold tracking-display mb-6 md:mb-8"
             >
               The Business<br />
               Beyond the<br />

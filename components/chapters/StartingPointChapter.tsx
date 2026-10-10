@@ -24,7 +24,7 @@ export const StartingPointChapter: React.FC<StartingPointChapterProps> = ({
             initial={{ opacity: 0, y: 25 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[0.98] text-5xl sm:text-6xl md:text-7xl lg:text-[92px] xl:text-[107px] 2xl:text-[110px] xl:whitespace-nowrap"
+            className="font-display-title text-ink font-extrabold tracking-display"
           >
             The product<br />
             you wish you<br />

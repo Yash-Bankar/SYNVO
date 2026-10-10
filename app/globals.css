@@ -94,6 +94,26 @@
       line-height: 1.02;
     }
   }
+  /* Flexible reduction (build-guide) so the opening never clips on short
+     laptops; obligations stay visible rather than being cut off. */
+  @media (min-width: 1024px) and (max-height: 880px) {
+    .font-hero-title {
+      font-size: 60px;
+      line-height: 1.03;
+    }
+  }
+  @media (min-width: 1024px) and (max-height: 760px) {
+    .font-hero-title {
+      font-size: 52px;
+      line-height: 1.04;
+    }
+  }
+  @media (min-width: 1024px) and (max-height: 660px) {
+    .font-hero-title {
+      font-size: 46px;
+      line-height: 1.05;
+    }
+  }
 
   .font-display-title {
     font-size: 36px;
@@ -167,3 +187,17 @@
 
 /* (Hero ribbon video sizing/mask now lives in components/chapters/HeroChapter.tsx
    as the VIDEO_SCALE / MASK_INNER / MASK_OUTER constants.) */
+
+/* Mobile: reserve a right gutter so the fixed chapter indicators (44x44 targets)
+   never overlap chapter content — FAQ +/- controls, body text, or artwork. */
+@media (max-width: 767px) {
+  #hero,
+  #starting-point,
+  #featured-research,
+  #partnership,
+  #evidence,
+  #ownership,
+  #before-you-apply {
+    padding-right: 3rem;
+  }
+}

@@ -100,8 +100,10 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
             <h3 className="text-xl sm:text-2xl md:text-[26px] font-extrabold text-ink tracking-tight max-w-[420px] leading-[1.18]">
               Help exceptional creators build and own enduring companies.
             </h3>
-            <p className="text-sm sm:text-base md:text-[17px] text-ink/80 font-normal leading-normal max-w-[360px] pt-1">
-              Synvo is a company-building partner for creators.
+            <p className="text-sm sm:text-base md:text-[17px] text-ink/80 font-normal leading-normal max-w-[420px] pt-1">
+              Synvo is a company-building partner for creators. Your continuing
+              role and Synvo&rsquo;s involvement are agreed as part of the
+              partnership.
             </p>
           </motion.div>
         </div>
@@ -113,7 +115,7 @@ export const BeforeYouApplyChapter: React.FC<BeforeYouApplyChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[0.98] text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[84px] mb-8 md:mb-12"
+            className="font-display-title text-ink font-extrabold tracking-display mb-8 md:mb-12"
           >
             Before you<br />
             apply

@@ -139,14 +139,6 @@ export default function FlagshipArticlePage() {
                 ))}
               </nav>
 
-              <div className="pt-4 border-t border-ink/10">
-                <button
-                  onClick={() => setIsApplyOpen(true)}
-                  className="w-full py-2.5 px-4 rounded-full bg-ink text-chalk text-xs font-bold hover:bg-ink/90 transition-all text-center"
-                >
-                  Apply to Synvo →
-                </button>
-              </div>
             </div>
           </aside>
 

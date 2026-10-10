@@ -80,7 +80,7 @@ export const EvidenceChapter: React.FC<EvidenceChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-10 text-5xl md:text-7xl lg:text-[88px]"
+            className="font-display-title text-ink font-extrabold tracking-display mb-10"
           >
             Build when
             <br />

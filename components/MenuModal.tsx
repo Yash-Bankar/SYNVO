@@ -26,24 +26,54 @@ export const MenuModal: React.FC<MenuModalProps> = ({
   onOpenApply,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
 
   useEffect(() => {
+    if (!isOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === "Escape") {
         onClose();
+        return;
+      }
+      // Keep focus inside the dialog while the menu is open.
+      if (e.key === "Tab" && containerRef.current) {
+        const focusables = containerRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement as HTMLElement;
+        if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "";
-    }
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    // Move focus into the menu on open.
+    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+
     return () => {
+      window.clearTimeout(focusTimer);
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
+      // Restore focus to whatever opened the menu.
+      previouslyFocusedRef.current?.focus?.();
     };
   }, [isOpen, onClose]);
 
@@ -111,9 +141,10 @@ export const MenuModal: React.FC<MenuModalProps> = ({
           {/* Top Bar matching header */}
           <header className="relative z-20 w-full flex items-center justify-between px-6 sm:px-10 md:px-16 pt-6 sm:pt-8">
             <button
+              ref={closeButtonRef}
               onClick={onClose}
               aria-label="Close menu"
-              className="inline-flex items-center gap-2 text-chalk hover:text-citron text-base sm:text-lg font-bold tracking-tight transition-colors focus:outline-none"
+              className="inline-flex items-center gap-2 text-chalk hover:text-citron text-base sm:text-lg font-bold tracking-tight transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-citron rounded"
             >
               <span>Close</span>
               <CloseIcon className="w-5 h-5" />

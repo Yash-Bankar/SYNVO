@@ -95,7 +95,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
             initial={{ opacity: 0, y: 25 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-1"
+            className="font-display-title text-ink font-extrabold tracking-display mb-1"
           >
             A company<br />
             you help shape.
@@ -105,7 +105,7 @@ export const OwnershipChapter: React.FC<OwnershipChapterProps> = ({
             initial={{ opacity: 0, y: 25 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-8"
+            className="font-display-title text-ink font-extrabold tracking-display mb-8"
           >
             A stake you own.
           </motion.h3>

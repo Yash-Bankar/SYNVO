@@ -111,7 +111,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-1"
+            className="font-display-title text-ink font-extrabold tracking-display mb-1"
           >
             Your
             <br />
@@ -125,7 +125,7 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="font-hero-title text-ink font-extrabold tracking-display leading-[1.02] mb-8"
+            className="font-display-title text-ink font-extrabold tracking-display mb-8"
           >
             A team runs it.
           </motion.h3>
@@ -203,6 +203,9 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
                 viewport={{ once: true }}
               />
 
+              {/* Diagram labels — desktop only; phones get a readable stacked list
+                  (shown below) because the baked labels scale down too far. */}
+              <g className="hidden md:block">
               {/* YOU label — positioned in upper-left of You petal */}
               <text
                 x={youCx - R * 0.6}
@@ -323,9 +326,42 @@ export const PartnershipChapter: React.FC<PartnershipChapterProps> = ({
               >
                 Company
               </text>
+              </g>
             </svg>
           </motion.div>
         </div>
+
+        {/* Readable role list — phones only (diagram labels are hidden there) */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="md:hidden grid grid-cols-1 gap-3 w-full"
+        >
+          <div className="rounded-2xl bg-[#EE6747] text-ink p-4">
+            <p className="font-extrabold text-lg tracking-tight">You</p>
+            <p className="text-sm leading-snug mt-1">
+              Audience understanding. Product direction.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-ink text-chalk p-4">
+            <p className="font-extrabold text-lg tracking-tight">Synvo</p>
+            <p className="text-sm leading-snug mt-1">
+              Development funding. Product and company build.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-[#C8C2D8] text-ink p-4">
+            <p className="font-extrabold text-lg tracking-tight">Operating team</p>
+            <p className="text-sm leading-snug mt-1">Daily operation.</p>
+          </div>
+          <div className="rounded-2xl bg-chalk border-2 border-ink text-ink p-4">
+            <p className="font-extrabold text-lg tracking-tight">Company</p>
+            <p className="text-sm leading-snug mt-1">
+              Formed by the three roles above.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Condition note — mobile places it below the diagram */}
         <motion.p

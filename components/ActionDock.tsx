@@ -60,7 +60,7 @@ export const ActionDock: React.FC<ActionDockProps> = ({
               onClick={() => onNavigateChapter(index)}
               aria-label={`Jump to chapter ${index + 1}: ${chapterTitles[index] || ""}`}
               aria-current={isActive ? "step" : undefined}
-              className="w-9 h-9 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-ink/40 group"
+              className="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-ink/40 group"
             >
               <span
                 className={`transition-all duration-300 rounded-full ${
@@ -120,9 +120,9 @@ export const ActionDock: React.FC<ActionDockProps> = ({
           <button
             onClick={onOpenApply}
             aria-label="Apply to Synvo"
-            className="h-[52px] md:h-[56px] px-7 sm:px-9 inline-flex items-center justify-center gap-3 rounded-full bg-ink text-chalk font-bold text-base tracking-tight hover:bg-ink/90 active:scale-98 transition-all shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
+            className="h-[52px] md:h-[56px] px-6 sm:px-9 inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-full bg-ink text-chalk font-bold text-sm sm:text-base tracking-tight whitespace-nowrap hover:bg-ink/90 active:scale-98 transition-all shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ink"
           >
-            <span>Apply to Synvo</span>
+            <span className="whitespace-nowrap">Apply to Synvo</span>
             <span className="text-lg leading-none transition-transform group-hover:translate-x-1">
               →
             </span>
